@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Inject by setter-->
+    <bean id="st01" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Student">
+        <property name="id" value="19487901"/>
+        <property name="name" value="Nguyen Van A"/>
+    </bean>
+
+    <bean id="clazz01" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Clazz">
+        <property name="clazzId" value="DHKTPM15A"/>
+        <property name="clazzName" value="Clazz DHKTPM15A"/>
+    </bean>
+
+    <bean id="st02" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Student">
+        <property name="id" value="19487909"/>
+        <property name="name" value="Nguyen Van B"/>
+        <property name="clazz" ref="clazz01"/>
+    </bean>
+
+    <bean id="clazz02" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Clazz">
+        <property name="clazzId" value="DHKHMT15A"/>
+        <property name="clazzName" value="Clazz DHKHMT15A"/>
+    </bean>
+
+    <!--Inject by constructor-->
+    <bean id="st03" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Student">
+        <constructor-arg name="id" value="19487909"/>
+        <constructor-arg name="name" value="Nguyen Van C"/>
+        <constructor-arg name="clazz" ref="clazz01"/>
+    </bean>
+
+    <bean id="add01" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Address">
+        <property name="city" value="TP.HCM"/>
+        <property name="country" value="Viet Nam"/>
+        <property name="street" value="145 Hoang Hoa Tham"/>
+    </bean>
+
+    <bean id="add02" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Address">
+        <property name="city" value="TP.HCM"/>
+        <property name="country" value="Viet Nam"/>
+        <property name="street" value="145 Mai Chi Tho"/>
+    </bean>
+
+    <bean id="person" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Person">
+        <property name="name" value="Nguyen Van D"/>
+        <property name="age" value="22"/>
+        <property name="addresses">
+            <list>
+                <ref bean="add01"/>
+                <ref bean="add02"/>
+            </list>
+        </property>
+        <property name="emails">
+            <list>
+                <value>nguyenvand@gmai.com</value>
+                <value>19487901.d@student.iuh.edu.vn</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--My Properties-->
+    <bean id="myProperties"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:sample.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
+    <bean id="clazz03" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Clazz">
+        <property name="clazzId" value="DHKTPM15A"/>
+        <property name="clazzName" value="${ten_lop}"/>
+    </bean>
+
+    <bean id="st04" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Student">
+        <property name="id" value="19487928"/>
+        <property name="name" value="Nguyen Van E"/>
+        <property name="clazz" ref="clazz03"/>
+    </bean>
+</beans>

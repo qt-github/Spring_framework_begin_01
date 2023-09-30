@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="faculty" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Faculty">
+        <property name="f_name" value="Faculty Of Information Technology"/>
+    </bean>
+
+    <bean id="dept01" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Department" autowire="no">
+        <property name="d_name" value="FIT"/>
+        <property name="faculty" ref="faculty"/>
+    </bean>
+
+    <bean id="dept02" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Department" autowire="byName">
+        <property name="d_name" value="SE"/>
+    </bean>
+
+    <bean id="dept03" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Department" autowire="byType">
+        <property name="d_name" value="IS"/>
+    </bean>
+
+    <bean id="dept04" class="vn.edu.iuh.fit.spring_framework_begin_01.models.Department" autowire="constructor">
+        <property name="d_name" value="SE"/>
+    </bean>
+</beans>
